@@ -1,3 +1,8 @@
+<!--
+Editable Text Box
+Text that can be switched to edit mode. Any edits will be validated and sent back to the listener.
+-->
+
 <template>
   <div v-if="editMode">
      <input type="text" v-if="editMode" placeholder="value"/>
