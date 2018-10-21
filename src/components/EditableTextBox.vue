@@ -4,22 +4,23 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 -->
 
 <template>
-  <div v-if="editMode">
-     <input type="text" v-if="editMode" placeholder="value"/>
+  <div v-if="$parent.editMode">
+     <input :type="type" :placeholder="placeholder" v-model="value"/>
   </div>
   <div v-else>
-    <h1>{{ value }}</h1>
+    <label>{{ value }}</label>
   </div>
-   
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HelloWorld extends Vue {
-  @Prop() public value!: string;
-  @Prop({default: false}) public editMode!: boolean;
+export default class EditableTextBox extends Vue {
+  public value: string = '';
+  public editMode: boolean = true;
+  @Prop({default: 'text'}) private type!: string;
+  @Prop({default: '...'}) private placeholder!: string;
 }
 </script>
 
@@ -38,5 +39,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+input {
+  height: 20px;
 }
 </style>
