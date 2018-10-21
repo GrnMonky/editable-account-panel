@@ -7,7 +7,7 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
   <div v-if="$parent.editMode">
      <input :type="type" :placeholder="placeholder" v-model="value"/>
   </div>
-  <div v-else>
+  <div v-else-if="value">
     <label>{{ value }}</label>
   </div>
 </template>
