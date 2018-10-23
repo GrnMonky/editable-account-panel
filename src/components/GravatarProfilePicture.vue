@@ -14,7 +14,7 @@ import md5 from 'md5';
 export default class GravatarProfilePicture extends Vue {
   @Prop({default: ''}) private email!: string;
   private srcFromEmail(): string {
-    return `https://www.gravatar.com/avatar/${md5(this.email)}`;
+    return `https://www.gravatar.com/avatar/${md5(this.email.toLowerCase().trim())}`;
   }
 }
 </script>
