@@ -13,14 +13,20 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class EditableTextBox extends Vue {
   public value: string = '';
   public editMode: boolean = true;
+  @Prop({default: 'none'}) public dataID!: string;
   @Prop({default: 'text'}) private type!: string;
   @Prop({default: '...'}) private placeholder!: string;
+  @Watch('$parent.editMode') private onEditModeChanged(val: boolean, oldVal: string) {
+    if (val === false) {
+      this.$emit('data-changed', {id: this.dataID, value: this.value});
+    }
+  }
 }
 </script>
 
