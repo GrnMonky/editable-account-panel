@@ -3,15 +3,19 @@ Gets users profile image from Gravatar by email
 -->
 
 <template>
-  <img src='../assets/Portrait_Placeholder.png'>
+  <img :src='srcFromEmail()'>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+var md5 = require('md5');
 
 @Component
-export default class ProfilePicture extends Vue {
+export default class GravatarProfilePicture extends Vue {
   @Prop() private email!: string;
+  srcFromEmail(): string {
+    return `https://www.gravatar.com/avatar/${md5(this.email)}`;
+  } 
 }
 </script>
 
