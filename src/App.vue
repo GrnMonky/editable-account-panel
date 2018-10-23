@@ -20,7 +20,7 @@
 
     <EditableFieldTitle title="Password">
       <template slot-scope='scope'>
-      <EditableTextBox :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)' type='password'/>
+      <PasswordBox :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
       </template>
     </EditableFieldTitle>
     </div>
@@ -32,6 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import GravatarProfilePicture from './components/GravatarProfilePicture.vue';
 import EditableFieldTitle from './components/EditableFieldTitle.vue';
 import EditableTextBox from './components/EditableTextBox.vue';
+import PasswordBox from './components/PasswordBox.vue';
 
 
 @Component({
@@ -39,6 +40,7 @@ import EditableTextBox from './components/EditableTextBox.vue';
     GravatarProfilePicture,
     EditableFieldTitle,
     EditableTextBox,
+    PasswordBox
   },
 })
 export default class App extends Vue {
