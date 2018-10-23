@@ -7,7 +7,7 @@
     <div id="fields">
     <EditableFieldTitle title="Email">
       <template slot-scope='scope'>
-      <EditableTextBox initialValue='mann.landon@gmail.com' :editMode='scope.editMode' dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
+      <EditableTextBox :editMode='scope.editMode' dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
       </template>
     </EditableFieldTitle>
 
