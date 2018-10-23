@@ -40,7 +40,7 @@ import PasswordBox from './components/PasswordBox.vue';
     GravatarProfilePicture,
     EditableFieldTitle,
     EditableTextBox,
-    PasswordBox
+    PasswordBox,
   },
 })
 export default class App extends Vue {
