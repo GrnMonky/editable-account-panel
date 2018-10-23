@@ -6,7 +6,7 @@ Wrapper for editable controls. Adds a title and edit button to child EditableTex
     <div class="wrapper">
         <label class="title">{{ title }}:</label>
         <slot></slot>
-        <button @click="editMode = !editMode">
+        <button class='edit' @click="editMode = !editMode">
             <template v-if="editMode">
             Save
             </template>
@@ -37,5 +37,8 @@ export default class EditableFieldTitle extends Vue {
 .title {
     padding-right: 10px;
     font-weight: bold;
+}
+.edit {
+    margin-left: 10px;
 }
 </style>

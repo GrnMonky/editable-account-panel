@@ -1,21 +1,21 @@
 <template>
   <div id="app">
     <div>
-    <ProfilePicture/>
+    <GravatarProfilePicture :email='email'/>
     </div>
 
     <div id="fields">
     <EditableFieldTitle title="Email">
-      <EditableTextBox type="email" placeholder="example@gmail.com"/>
+      <EditableTextBox dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Name">
-      <EditableTextBox placeholder="First" style="padding-right: 10px;"/>
-      <EditableTextBox placeholder="Last"/>
+      <EditableTextBox dataID='firstName' placeholder="First" @data-changed='updateData($event)' style="padding-right: 10px;"/>
+      <EditableTextBox dataID='lastName' placeholder="Last" @data-changed='updateData($event)'/>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Password">
-      <EditableTextBox placeholder="Password" type='password'/>
+      <EditableTextBox dataID='password' placeholder="Password" @data-changed='updateData($event)' type='password'/>
     </EditableFieldTitle>
     </div>
   </div>
@@ -23,19 +23,27 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ProfilePicture from './components/ProfilePicture.vue';
+import GravatarProfilePicture from './components/GravatarProfilePicture.vue';
 import EditableFieldTitle from './components/EditableFieldTitle.vue';
 import EditableTextBox from './components/EditableTextBox.vue';
 
 
 @Component({
   components: {
-    ProfilePicture,
+    GravatarProfilePicture,
     EditableFieldTitle,
     EditableTextBox,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private email: string = '';
+  private updateData(data: {id: string, value: string}): void  {
+    if(data.id === 'email') {
+      this.email = data.value;
+    }
+    alert(`Updating ${data.id} to ${data.value} in database`);
+  }
+}
 </script>
 
 <style lang="scss">
