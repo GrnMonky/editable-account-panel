@@ -12,7 +12,7 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
       <input class="password-label" :type="dynamicType" :placeholder="placeholder" v-model="value" disabled/>
   </div>
 
-  <input type="checkbox" v-on:click="showPassword">
+  <input type="checkbox" v-on:click="showPassword"> show password
 </div>
 </template>
 
