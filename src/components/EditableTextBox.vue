@@ -4,7 +4,7 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 -->
 
 <template>
-  <div v-if="$parent.editMode">
+  <div v-if="editMode">
      <input :type="type" :placeholder="placeholder" v-model="value"/>
   </div>
   <div v-else-if="value">
@@ -17,12 +17,13 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class EditableTextBox extends Vue {
-  public value: string = '';
-  public editMode: boolean = true;
+  @Prop({default: ''}) public initialValue!: string;
+  public value: string = this.initialValue;
+  @Prop({default: false}) public editMode!: boolean;
   @Prop({default: 'none'}) public dataID!: string;
   @Prop({default: 'text'}) private type!: string;
   @Prop({default: '...'}) private placeholder!: string;
-  @Watch('$parent.editMode') private onEditModeChanged(val: boolean, oldVal: string) {
+  @Watch('editMode') private onEditModeChanged(val: boolean, oldVal: string) {
     if (val === false) {
       this.$emit('data-changed', {id: this.dataID, value: this.value});
     }

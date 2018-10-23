@@ -6,7 +6,7 @@ describe('EditableTextBox.vue', () => {
   it('starts off as a regular text or header', () => {
     const value = 'Test';
     const wrapper = shallowMount(EditableTextBox, {
-      propsData: { value },
+      propsData: { initialValue: value },
     });
     expect(wrapper.text()).to.include(value);
     expect(wrapper.contains('input')).to.equals(false);
@@ -15,7 +15,7 @@ describe('EditableTextBox.vue', () => {
   it('switches to input in editMode', () => {
     const value = 'Test';
     const wrapper = shallowMount(EditableTextBox, {
-      propsData: { value, editMode: true },
+      propsData: { initialValue: value, editMode: true },
     });
     expect(wrapper.contains('input')).to.equals(true);
   });

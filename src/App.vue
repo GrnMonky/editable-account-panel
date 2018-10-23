@@ -6,16 +6,22 @@
 
     <div id="fields">
     <EditableFieldTitle title="Email">
-      <EditableTextBox dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
+      <template slot-scope='scope'>
+      <EditableTextBox initialValue='mann.landon@gmail.com' :editMode='scope.editMode' dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
+      </template>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Name">
-      <EditableTextBox dataID='firstName' placeholder="First" @data-changed='updateData($event)' style="padding-right: 10px;"/>
-      <EditableTextBox dataID='lastName' placeholder="Last" @data-changed='updateData($event)'/>
+      <template slot-scope='scope'>
+      <EditableTextBox :editMode='scope.editMode' dataID='firstName' placeholder="First" @data-changed='updateData($event)' style="padding-right: 10px;"/>
+      <EditableTextBox :editMode='scope.editMode' dataID='lastName' placeholder="Last" @data-changed='updateData($event)'/>
+      </template>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Password">
-      <EditableTextBox dataID='password' placeholder="Password" @data-changed='updateData($event)' type='password'/>
+      <template slot-scope='scope'>
+      <EditableTextBox :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)' type='password'/>
+      </template>
     </EditableFieldTitle>
     </div>
   </div>
@@ -38,7 +44,7 @@ import EditableTextBox from './components/EditableTextBox.vue';
 export default class App extends Vue {
   private email: string = '';
   private updateData(data: {id: string, value: string}): void  {
-    if(data.id === 'email') {
+    if (data.id === 'email') {
       this.email = data.value;
     }
     alert(`Updating ${data.id} to ${data.value} in database`);

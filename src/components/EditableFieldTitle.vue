@@ -5,7 +5,7 @@ Wrapper for editable controls. Adds a title and edit button to child EditableTex
 <template>
     <div class="wrapper">
         <label class="title">{{ title }}:</label>
-        <slot></slot>
+        <slot :editMode='editMode'></slot>
         <button class='edit' @click="editMode = !editMode">
             <template v-if="editMode">
             Save

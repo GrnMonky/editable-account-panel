@@ -10,6 +10,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/md5": "^2.1.33",
     "md5": "^2.2.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
