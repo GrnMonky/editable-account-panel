@@ -1,18 +1,20 @@
 <!--
-Editable Text Box
-Text that can be switched to edit mode. Any edits will be validated and sent back to the listener.
+Password Text Box
+An editable text box that for passwords. Shows password strength and showing password can be toggled on and off.
 -->
 
 <template>
 <div>
   <div v-if="editMode">
-     <password v-model="value" :showPassword='dynamicType === "text"'/>
+     <password v-model="value" :showPassword='showPassword'/>
   </div>
   <div v-else-if="value">
-      <input class="password-label" :type="dynamicType" :placeholder="placeholder" v-model="value" disabled/>
+      <input class="password-label" :type="showPassword ? 'text' : 'password'" :placeholder="placeholder" v-model="value" disabled/>
   </div>
 
-  <input type="checkbox" v-on:click="showPassword"> show password
+    <template v-if='value || editMode'>
+  <input type="checkbox" v-model="showPassword"> show password
+    </template>
 </div>
 </template>
 
@@ -27,14 +29,7 @@ import Password from 'vue-password-strength-meter';
   },
 })
 export default class PasswordBox extends EditableTextBox {
-    private dynamicType: string = 'password';
-    private showPassword(): void {
-        if (this.dynamicType === 'text') {
-            this.dynamicType = 'password';
-        } else {
-            this.dynamicType = 'text';
-        }
-    }
+    private showPassword: boolean = false;
 }
 
 </script>
