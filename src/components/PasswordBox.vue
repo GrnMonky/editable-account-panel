@@ -6,7 +6,7 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 <template>
 <div>
   <div v-if="editMode">
-     <input :type="dynamicType" :placeholder="placeholder" v-model="value"/>
+     <password v-model="value" :showPassword='dynamicType === "text"'/>
   </div>
   <div v-else-if="value">
       <input class="password-label" :type="dynamicType" :placeholder="placeholder" v-model="value" disabled/>
@@ -19,8 +19,13 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import EditableTextBox from './EditableTextBox.vue';
+import Password from 'vue-password-strength-meter';
 
-@Component
+@Component({
+  components: {
+    Password,
+  },
+})
 export default class PasswordBox extends EditableTextBox {
     private dynamicType: string = 'password';
     private showPassword(): void {
