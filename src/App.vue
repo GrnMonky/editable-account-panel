@@ -20,7 +20,7 @@
 
     <EditableFieldTitle title="Password">
       <template slot-scope='scope'>
-      <PasswordBox validations='required' :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
+      <PasswordBox validations='required|min:7' :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
       </template>
     </EditableFieldTitle>
     </div>
