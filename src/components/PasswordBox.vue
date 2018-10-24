@@ -6,7 +6,7 @@ An editable text box that for passwords. Shows password strength and showing pas
 <template>
 <div>
   <div v-if="editMode">
-     <password v-model="value" :showPassword='showPassword'/>
+     <password v-model="value" :showPassword='showPassword' v-validate:value="validations" name='input'/>
   </div>
   <div v-else-if="value">
       <input class="password-label" :type="showPassword ? 'text' : 'password'" :placeholder="placeholder" v-model="value" disabled/>
