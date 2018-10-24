@@ -7,20 +7,20 @@
     <div id="fields">
     <EditableFieldTitle title="Email">
       <template slot-scope='scope'>
-      <EditableTextBox :editMode='scope.editMode' dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
+      <EditableTextBox validations='email|required' :editMode='scope.editMode' dataID='email' @data-changed='updateData($event)' type="email" placeholder="example@gmail.com"/>
       </template>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Name">
       <template slot-scope='scope'>
-      <EditableTextBox :editMode='scope.editMode' dataID='firstName' placeholder="First" @data-changed='updateData($event)' style="padding-right: 10px;"/>
-      <EditableTextBox :editMode='scope.editMode' dataID='lastName' placeholder="Last" @data-changed='updateData($event)'/>
+      <EditableTextBox validations='required' :editMode='scope.editMode' dataID='firstName' placeholder="First" @data-changed='updateData($event)' style="padding-right: 10px;"/>
+      <EditableTextBox validations='required' :editMode='scope.editMode' dataID='lastName' placeholder="Last" @data-changed='updateData($event)'/>
       </template>
     </EditableFieldTitle>
 
     <EditableFieldTitle title="Password">
       <template slot-scope='scope'>
-      <PasswordBox :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
+      <PasswordBox validations='required' :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
       </template>
     </EditableFieldTitle>
     </div>
@@ -33,7 +33,9 @@ import GravatarProfilePicture from './components/GravatarProfilePicture.vue';
 import EditableFieldTitle from './components/EditableFieldTitle.vue';
 import EditableTextBox from './components/EditableTextBox.vue';
 import PasswordBox from './components/PasswordBox.vue';
+import VeeValidate from 'vee-validate';
 
+Vue.use(VeeValidate, { inject: false });
 
 @Component({
   components: {
