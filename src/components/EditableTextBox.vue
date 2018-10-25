@@ -5,7 +5,7 @@ Text that can be switched to edit mode. Any edits will be validated and sent bac
 
 <template>
   <div v-if="editMode">
-     <input :class="{ error: errors.has(dataID) }" :type="type" :placeholder="placeholder" v-model="value" v-validate:value="validations" :name='dataID' v-validate.disabled/>
+     <input :class="{ error: errors.has(dataID) }" data-vv-validate-on="blur" :type="type" :placeholder="placeholder" v-model="value" v-validate="validations" :name='dataID'/>
   </div>
   <div v-else-if="value">
     <label>{{ value }}</label>
