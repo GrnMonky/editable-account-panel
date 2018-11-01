@@ -44,10 +44,13 @@ export default class EditableFieldTitle extends Vue {
     display: flex;
     flex-wrap: nowrap;
     align-items: baseline;
+    min-height: 30px;
+    align-items: bottom;
 }
 .title {
     padding-right: 10px;
     font-weight: bold;
+    vertical-align: bottom;
 }
 .edit {
     margin-left: 10px;

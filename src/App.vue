@@ -23,6 +23,33 @@
       <PasswordBox validations='required|min:7' :editMode='scope.editMode' dataID='password' placeholder="Password" @data-changed='updateData($event)'/>
       </template>
     </EditableFieldTitle>
+
+    <EditableFieldTitle title="Phone #">
+      <template slot-scope='scope'>
+        <EditableTextBox validations='required|min:8|max:15|numeric' :editMode='scope.editMode' dataID='phone' placeholder="Phone #" @data-changed='updateData($event)' style="padding-right: 10px;"/>
+      </template>
+    </EditableFieldTitle>
+
+    <EditableFieldTitle title="Address">
+      <template slot-scope='scope'>
+      <div class="address_field" >
+        <div class="address_line">
+      <div>Street:</div>
+      <EditableTextBox class="address_box" validations='required' :editMode='scope.editMode' dataID='street' placeholder="Street" @data-changed='updateData($event)'/>
+      </div>
+      <div class="address_line">
+      <div>City:</div>
+      <EditableTextBox class="address_box" validations='required' :editMode='scope.editMode' dataID='city' placeholder="City" @data-changed='updateData($event)'/>
+      </div>
+      <div class="address_line">
+      <div>State:</div>
+      <EditableTextBox class="address_box" validations='required' :editMode='scope.editMode' dataID='state' placeholder="State" @data-changed='updateData($event)'/>
+      <div>Zip:</div>
+      <EditableTextBox class="address_box" validations='required|digits:6' :editMode='scope.editMode' dataID='zip' placeholder="Zip" @data-changed='updateData($event)'/>
+      </div>
+      </div>
+      </template>
+    </EditableFieldTitle>
     </div>
   </div>
 </template>
@@ -70,8 +97,31 @@ export default class App extends Vue {
 }
 
 #fields {
+  display: grid;
+  grid-gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.address_field {
   display: flex;
-  flex-flow: column;
-  justify-content: space-around;
+  flex-direction: column;
+}
+
+.address_box {
+  padding-left: 20px;
+}
+
+.address_line {
+  display: flex;
+  flex-direction: row;
+}
+
+.address_line > * {
+  padding-left: 10px;
+}
+
+.address_line :first-child {
+  padding-left: 0;
 }
 </style>
